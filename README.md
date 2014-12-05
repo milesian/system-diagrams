@@ -6,11 +6,15 @@ Using milesian/aop we can log the component call sequence, so it's very easy to 
 
 This project uses [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) for js/HTML SVG rendering
 
+
+![image](https://dl.dropboxusercontent.com/u/8688858/milesian-sequence-diagram.png)
  
  
 ## Usage
+1. evaluate test/milesian/test_utils.clj
+2. [Open](http://localhost:8088/index.html) http://localhost:8088/index.html   
+3. evaluate test/milesian/websocket_test.clj
 
-...
 
 
 ## License

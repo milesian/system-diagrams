@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<title>milesian sequence diagram dashboard</title>
 <script src="jquery-2.1.1.min.js"></script>
 <script src="raphael-min.js"></script>
 <script src="underscore-min.js"></script>
@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
 
-var socket = new WebSocket("ws://localhost:8080/sequence_diagram");
+var socket = new WebSocket("ws://localhost:8088/sequence_diagram");
 
 socket.onmessage = function(event) {
 var d=JSON.parse(event.data)["diagram"];

@@ -9,5 +9,7 @@
                  [http-kit "2.0.0"]
                  [compojure "1.1.5"]
                  [ring-cors "0.1.0"]]
-  :main milesian.websocket
-  :min-lein-version "2.0.0")
+  :profiles {:dev {:dependencies [[milesian/bigbang "0.1.1-SNAPSHOT"]
+                                  [milesian/aop "0.1.2-SNAPSHOT"]
+                                  [milesian/system-examples "0.1.1-SNAPSHOT"]
+                                  [milesian/identity "0.1.2-SNAPSHOT"]]}})
