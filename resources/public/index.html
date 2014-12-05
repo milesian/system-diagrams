@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="jquery-2.1.1.min.js"></script>
+<script src="raphael-min.js"></script>
+<script src="underscore-min.js"></script>
+<script src="sequence-diagram-min.js"></script>
+
+<script type="text/javascript">
+
+var socket = new WebSocket("ws://localhost:8080/sequence_diagram");
+
+socket.onmessage = function(event) {
+var d=JSON.parse(event.data)["diagram"];
+var c = $("#diagram").html();
+$("#diagram").empty();
+var diagram = Diagram.parse(d);
+diagram.drawSVG('diagram');
+$("#diagram").append("<hr>"+c);
+}
+
+
+</script>
+</head>
+
+<body>
+<div><button id="r">reset!</button></div>
+<div id="diagram"></div>
+<script>
+$("#r").click(function() {
+ $("#diagram").empty();
+});
+</script>
+</body>
+</html>
