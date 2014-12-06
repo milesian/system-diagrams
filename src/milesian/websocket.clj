@@ -24,11 +24,6 @@
   (doseq [client @clients]
             (send! (key client) (generate-string {:diagram m}) false)))
 
-#_(future (loop []
-          (publish-message (str "A->B: Does something ... " (int (rand 10))))
-          (Thread/sleep 5000)
-          (recur)))
-
 (defroutes routes
   (GET "/sequence_diagram" [] ws)
   (GET "/" [] (redirect "/index.html"))
@@ -48,3 +43,5 @@
 (defn -main [& args]
   (start-server)
   )
+
+(defonce server (start-server))

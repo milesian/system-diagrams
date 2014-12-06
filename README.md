@@ -15,7 +15,8 @@ This project uses [bramp/js-sequence-diagrams](https://github.com/bramp/js-seque
 ```clojure
 user> (use 'milesian.websocket-test)
 user> (in-ns 'milesian.websocket-test)
-milesian.websocket-test> (browse-url "http://localhost:8088/")
+... open your browser (by default port 8088 defined in websocket.clj )
+milesian.websocket-test> (clojure.java.browse/browse-url "http://localhost:8088/")
  ... invoke your components
 milesian.websocket-test> (listening (:b system))
  ... check your browser
