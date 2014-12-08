@@ -1,13 +1,10 @@
 (ns milesian.websocket
-  (:use [compojure.core :only (defroutes GET)]
-        ring.util.response
-        ring.middleware.cors
-        org.httpkit.server)
-  (:require [compojure.route :as route]
+  (:require [org.httpkit.server :refer (run-server with-channel on-close send!)]
+            [compojure.core :refer (defroutes GET)]
+            [compojure.route :as route]
             [compojure.handler :as handler]
-            [ring.util.response :refer [redirect]]
-            [ring.middleware.reload :as reload]
-            [cheshire.core :refer :all]))
+            [ring.util.response :refer (redirect)]
+            [cheshire.core :refer (generate-string)]))
 
 (def clients (atom {}))
 
@@ -22,26 +19,25 @@
 
 (defn publish-message [m]
   (doseq [client @clients]
-            (send! (key client) (generate-string {:diagram m}) false)))
+    (send! (key client)  m false)))
 
 (defroutes routes
   (GET "/sequence_diagram" [] ws)
   (GET "/" [] (redirect "/index.html"))
-  (route/resources "/"))
+  (route/resources "/")
+  )
 
 
-(def application (-> (handler/site routes)
-                     reload/wrap-reload
-                     (wrap-cors
-                      :access-control-allow-origin #".+")))
+(def application  )
 
 (defn start-server []
   (let [port (Integer/parseInt
-               (or (System/getenv "PORT") "8088"))]
-    (run-server application {:port port :join? false})))
+              (or (System/getenv "PORT") "8088"))]
+    (run-server (handler/site routes) {:port port :join? false})
+    ))
+
 
 (defn -main [& args]
-  (start-server)
-  )
+  (start-server))
 
 (defonce server (start-server))

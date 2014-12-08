@@ -11,6 +11,8 @@
 
             [milesian.system-examples :refer (new-system-map listening talking Listen Talk)]))
 
+
+(println server)
 (def system-map (new-system-map))
 
 (def system (bigbang/expand system-map {:before-start [[identity/add-meta-key system-map]
@@ -20,5 +22,7 @@
 
 
 
-;;(listening (:b system))
-;;(talking (:c system))
+(comment
+  (listening (:b system))
+  (talking (:c system))
+  )
