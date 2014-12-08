@@ -3,8 +3,7 @@
             [compojure.core :refer (defroutes GET)]
             [compojure.route :as route]
             [compojure.handler :as handler]
-            [ring.util.response :refer (redirect)]
-            [cheshire.core :refer (generate-string)]))
+            [ring.util.response :refer (redirect)]))
 
 (def clients (atom {}))
 
