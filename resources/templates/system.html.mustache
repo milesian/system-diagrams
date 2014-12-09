@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sequence Diagram Dashboard</title>
+<title>System Diagram dashboard</title>
+
+<link rel="stylesheet" href="bootstrap.css">
+
 <script src="jquery-2.1.1.min.js"></script>
 <script src="raphael-min.js"></script>
 <script src="underscore-min.js"></script>
 <script src="sequence-diagram-min.js"></script>
-<link rel="stylesheet" href="bootstrap.css">
 
-
+<script src="d3.min.js"></script>
+<script src="graphlib-dot.js"></script>
+<script src="dagre-d3.js"></script>
 
 <script type="text/javascript">
+
 var socket = new WebSocket("ws://localhost:{{port}}/sequence_diagram");
+
 socket.onmessage = function(event) {
 var d=event.data;
 var c = $("#diagram").html();
@@ -20,12 +26,14 @@ var diagram = Diagram.parse(d);
 diagram.drawSVG('diagram',{theme: 'simple'});
 $("#diagram").append("<hr>"+c);
 }
+
+
 </script>
 </head>
 
 <body>
-<h1> Listening port {{webapp-port}} </h1>
-<div><button id="r">reset!</button></div>
+<h1> Drawing systems: listening port {{webapp-port}} </h1>
+
 <div id="diagram"></div>
 <script>
 $("#r").click(function() {

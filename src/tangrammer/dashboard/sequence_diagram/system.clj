@@ -30,7 +30,7 @@
   [system config]
   (assoc system
     :webapp
-    (-> (new-webapp)
+    (-> (new-webapp :port (get-in config [:webapp :port]))
         (using {:ws :ws-bridge}))
 
     :webapp-router

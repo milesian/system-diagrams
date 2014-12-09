@@ -11,14 +11,15 @@
    ))
 
 (defn render-page
-  ([data]
+  ([data page]
      (render-resource
-      (str "templates/index.html.mustache")
+      (str (format "templates/%s.html.mustache" page))
       data)))
 
 
 (def routes
   ["/" [["dashboard" :dashboard]
+        ["dagree" :dagree]
         ["publish" :publish]
         ["" (->ResourcesMaybe {:prefix "public/"})]]])
 
@@ -28,7 +29,7 @@
   (println "try to publish message!")
   )
 
-(defrecord WebApp [ws]
+(defrecord WebApp [ws port]
   WebService
   (request-handlers [this] {:publish (fn [req]
                                        (let [data  (:sequence (-> (:body req)  read-json-body ->clj))]
@@ -38,7 +39,8 @@
 
 
                                        )
-                            :dashboard (fn [req] (response (render-page {:port (:port ws)})))
+                            :dashboard (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "index")))
+                            :dagree (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "system")))
                             })
   (routes [_] routes)
   (uri-context [_] ""))
