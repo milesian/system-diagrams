@@ -1,4 +1,4 @@
-(defproject tangrammer/sequence-diagram-dashboard "0.1.2-SNAPHSOT"
+(defproject tangrammer/webclient-system-diagram "0.1.3-SNAPHSOT"
   :description "sequence diagram html live renderer"
   :url "https://github.com/tangrammer/sequence-diagram-dashboard"
   :license {:name "MIT License"
