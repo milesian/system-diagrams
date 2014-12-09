@@ -19,7 +19,7 @@ $ cd milesian-sequence-diagram
 $ lein repl
 $ (dev)
 $ (go)
-$ (clojure.java.browse/browse-url http://localhost:8011/dashboard" ))
+$ (clojure.java.browse/browse-url "http://localhost:8011/dashboard")
 
 ```
 
