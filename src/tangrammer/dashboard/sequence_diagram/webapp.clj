@@ -7,7 +7,7 @@
    [org.httpkit.server :refer (send!)]
    [tangrammer.dashboard.sequence-diagram.utils :refer (->clj read-json-body)]
    [clostache.parser :refer (render-resource render)]
-
+   [cheshire.core :refer (generate-string)]
    ))
 
 (defn render-page
@@ -25,7 +25,10 @@
 
 (defn publish-message [ws m]
   (doseq [client @(:clients ws)]
-      (send! (key client)  m false))
+      (send! (key client) (generate-string
+                           {:sequence m
+                            :graph "digraph {A -> B -> C; B -> D; D -> E; C -> E; A -> D; F -> J; E -> J;}"
+                            })  false))
   (println "try to publish message!")
   )
 

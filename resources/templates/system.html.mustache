@@ -13,33 +13,113 @@
 <script src="d3.min.js"></script>
 <script src="graphlib-dot.js"></script>
 <script src="dagre-d3.js"></script>
-
+<!-- BASED ON:  http://cpettitt.github.io/project/dagre-d3/latest/demo/interactive-demo.html -->
 <script type="text/javascript">
 
 var socket = new WebSocket("ws://localhost:{{port}}/sequence_diagram");
 
 socket.onmessage = function(event) {
 var d=event.data;
+var d=JSON.parse(event.data)["graph"];
+// tryDraw('digraph {A -> B -> C;B -> D;D -> E;C -> E;A -> D;F -> J;E -> J;}');
+tryDraw(d);
+/*
 var c = $("#diagram").html();
 $("#diagram").empty();
 var diagram = Diagram.parse(d);
 diagram.drawSVG('diagram',{theme: 'simple'});
 $("#diagram").append("<hr>"+c);
+*/
 }
 
 
 </script>
+<style>
+svg {
+  border: 1px solid #999;
+  overflow: hidden;
+}
+
+.node {
+  white-space: nowrap;
+}
+
+.node rect,
+.node cicrce,
+.node ellipse {
+  stroke: #333;
+  fill: #fff;
+  stroke-width: 1.5px;
+}
+
+.cluster rect {
+  stroke: #333;
+  fill: #000;
+  fill-opacity: 0.1;
+  stroke-width: 1.5px;
+}
+
+.edgePath path.path {
+  stroke: #333;
+  stroke-width: 1.5px;
+  fill: none;
+}
+</style>
+
+
 </head>
 
-<body>
+<body >
 <h1> Drawing systems: listening port {{webapp-port}} </h1>
+<svg width=800 height=600>
+  <g/>
+</svg>
+
 
 <div id="diagram"></div>
 <script>
-$("#r").click(function() {
- $("#diagram").empty();
-});
+
+// Set up zoom support
+var svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.behavior.zoom().on("zoom", function() {
+      inner.attr("transform", "translate(" + d3.event.translate + ")" +
+                                  "scale(" + d3.event.scale + ")");
+    });
+svg.call(zoom);
+
+// Create and configure the renderer
+var render = dagreD3.render();
+
+function tryDraw(v) {
+  var g;
+  if (true) {
+    try {
+      g = graphlibDot.read(v);
+    } catch (e) {
+      throw e;
+    }
+
+    // Save link to new graph
+
+    // Set margins, if not present
+    if (!g.graph().hasOwnProperty("marginx") &&
+        !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 20;
+      g.graph().marginy = 20;
+    }
+
+    g.graph().transition = function(selection) {
+      return selection.transition().duration(500);
+    };
+
+    // Render the graph into svg g
+    d3.select("svg g").call(render, g);
+  }
+}
 </script>
+
+
 <script src="bootstrap.min.js"></script>
 </body>
 </html>

@@ -22,6 +22,7 @@
   component/Lifecycle
   (start [this]
     (let [clients (atom {})
+ ;
           handler (make-handler ["/sequence_diagram" (fn [req] (ws req clients))])
           server (run-server handler {:port port})]
       (log/debugf "About to start WebSocket server on port %d" port)

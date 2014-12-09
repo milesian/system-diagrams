@@ -13,7 +13,8 @@
 <script type="text/javascript">
 var socket = new WebSocket("ws://localhost:{{port}}/sequence_diagram");
 socket.onmessage = function(event) {
-var d=event.data;
+var d=JSON.parse(event.data)["sequence"];
+
 var c = $("#diagram").html();
 $("#diagram").empty();
 var diagram = Diagram.parse(d);
