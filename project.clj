@@ -1,6 +1,6 @@
 (defproject tangrammer/webclient-system-diagram "0.1.3-SNAPHSOT"
   :description "sequence diagram html live renderer"
-  :url "https://github.com/tangrammer/sequence-diagram-dashboard"
+  :url "https://github.com/tangrammer/webclient-system-diagram"
   :license {:name "MIT License"
             :url "http://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.7.0-alpha4"]

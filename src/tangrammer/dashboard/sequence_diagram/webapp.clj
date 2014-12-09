@@ -18,32 +18,44 @@
 
 
 (def routes
-  ["/" [["dashboard" :dashboard]
-        ["dagree" :dagree]
-        ["publish" :publish]
+  ["/" [["sequence" :sequence]
+        ["graph" :graph]
+        ["publish-sequence" :publish-sequence-h]
+        ["publish-graph" :publish-graph-h]
         ["" (->ResourcesMaybe {:prefix "public/"})]]])
 
 (defn publish-message [ws m]
   (doseq [client @(:clients ws)]
       (send! (key client) (generate-string
-                           {:sequence m
-                            :graph "digraph {A -> B -> C; B -> D; D -> E; C -> E; A -> D; F -> J; E -> J;}"
-                            })  false))
+                           {:sequence m})  false))
   (println "try to publish message!")
   )
 
+(defn publish-graph [ws m]
+  (doseq [client @(:clients ws)]
+      (send! (key client) (generate-string
+                           {:graph m
+                            ;;"digraph {A -> B -> C; B -> D; D -> E; C -> E; A -> D; F -> J; E -> J;}"
+                            })  false))
+  (println "try to publish message!")
+  )
 (defrecord WebApp [ws port]
   WebService
-  (request-handlers [this] {:publish (fn [req]
-                                       (let [data  (:sequence (-> (:body req)  read-json-body ->clj))]
-                                         (println data)
-                                         (publish-message ws data)
-                                         (response data))
+  (request-handlers [this] {:publish-sequence-h (fn [req]
+                                                (when-let [sequence-diagram  (:sequence (-> (:body req)  read-json-body ->clj))]
+                                                  (println sequence-diagram)
 
+                                                  (publish-message ws sequence-diagram)
+                                                  (response  " >>>> sequence diagram published!")))
+                            :publish-graph-h (fn [req]
+                                             (when-let [graph-diagram  (:graph (-> (:body req)  read-json-body ->clj))]
+                                               (println graph-diagram)
 
-                                       )
-                            :dashboard (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "index")))
-                            :dagree (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "system")))
+                                               (publish-graph ws graph-diagram)
+                                               (response  " >>>> graph diagram published!")))
+
+                            :sequence (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "index")))
+                            :graph (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "system")))
                             })
   (routes [_] routes)
   (uri-context [_] ""))

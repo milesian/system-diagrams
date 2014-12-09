@@ -16,7 +16,7 @@
 <!-- BASED ON:  http://cpettitt.github.io/project/dagre-d3/latest/demo/interactive-demo.html -->
 <script type="text/javascript">
 
-var socket = new WebSocket("ws://localhost:{{port}}/sequence_diagram");
+var socket = new WebSocket("ws://localhost:{{port}}/diagram_ws");
 
 socket.onmessage = function(event) {
 var d=event.data;
