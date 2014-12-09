@@ -11,7 +11,7 @@ It is intended to use as standalone app
 ![image](https://dl.dropboxusercontent.com/u/8688858/seq.png)
 
 ###Snapshot of a sequence of system graphs
-![image](https://dl.dropboxusercontent.com/u/8688858/seq.png)
+![image](https://dl.dropboxusercontent.com/u/8688858/system-graphs.png)
 
 
 # Simple Usage
