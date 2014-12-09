@@ -1,6 +1,6 @@
 # sequence-diagram-dashboard
 
-This is a tool for displaying HTML sequence diagrams.
+This is a clojure tool for displaying HTML sequence diagrams. It's based on webapp and websocket. It uses [stuartsierra/component](https://github.com/stuartsierra/component) and [juxt/modular](https://github.com/juxt/modular)
 
 This project uses [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) for js/HTML SVG rendering
 
