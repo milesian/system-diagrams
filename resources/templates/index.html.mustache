@@ -16,7 +16,7 @@ var d=event.data;
 var c = $("#diagram").html();
 $("#diagram").empty();
 var diagram = Diagram.parse(d);
-diagram.drawSVG('diagram');
+diagram.drawSVG('diagram',{theme: 'simple'});
 $("#diagram").append("<hr>"+c);
 }
 
