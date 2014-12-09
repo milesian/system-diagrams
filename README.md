@@ -5,7 +5,7 @@ This is a tool for displaying HTML sequence diagrams.
 This project uses [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) for js/HTML SVG rendering
 
 
-![image](https://dl.dropboxusercontent.com/u/8688858/milesian-sequence-diagram.png)
+![image](https://dl.dropboxusercontent.com/u/8688858/seq.png)
 
 
 ## Simple Usage following REPL
