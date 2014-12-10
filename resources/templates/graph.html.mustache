@@ -36,21 +36,17 @@ tryDraw(d);
 
 <div id="diagram"></div>
 <script>
-// Set up zoom support
-var svg = d3.select("svg"),
-inner = d3.select("svg g"),
-zoom = d3.behavior.zoom().on("zoom", function() {
-inner.attr("transform", "translate(" + d3.event.translate + ")" +
-"scale(" + d3.event.scale + ")");
-});
-svg.call(zoom);
+
+
+function tryDraw(v) {
+
+
+  var g;
+  if (v) {
 
 // Create and configure the renderer
 var render = dagreD3.render();
 
-function tryDraw(v) {
-  var g;
-  if (v) {
     try {
       g = graphlibDot.read(v);
     } catch (e) {
@@ -71,6 +67,15 @@ function tryDraw(v) {
     // Render the graph into svg g
 
 $("#current").append("<svg width=800 height=600><g/></svg>");
+// Set up zoom support
+var svg = d3.select("div svg"),
+inner = d3.select("div svg g"),
+zoom = d3.behavior.zoom().on("zoom", function() {
+inner.attr("transform", "translate(" + d3.event.translate + ")" +
+"scale(" + d3.event.scale + ")");
+});
+svg.call(zoom);
+
 d3.select("#current svg g").call(render, g);
 $("#diagram").prepend($("#current svg"));
 $("#diagram").prepend("<hr>");
