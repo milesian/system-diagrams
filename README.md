@@ -28,7 +28,7 @@ $ lein repl
 
 Using [lein-try](https://github.com/rkneufeld/lein-try)
 ```
-$ lein try tangrammer/webclient-system-diagram "0.1.3"
+$ lein try tangrammer/webclient-system-diagram "0.1.5"
 
 ```
 

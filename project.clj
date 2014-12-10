@@ -1,4 +1,4 @@
-(defproject tangrammer/webclient-system-diagram "0.1.4-SNAPSHOT"
+(defproject tangrammer/webclient-system-diagram "0.1.5-SNAPSHOT"
   :description "sequence diagram html live renderer"
   :url "https://github.com/tangrammer/webclient-system-diagram"
   :license {:name "MIT License"
