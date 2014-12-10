@@ -6,11 +6,8 @@ So far it's ready for rendering **sequence call system diagrams** (using js lib:
 
 Besides these js resources it's written in clojure and mainly based on [http-kit](http://www.http-kit.org/),  [stuartsierra/component](https://github.com/stuartsierra/component) and [juxt/modular](https://github.com/juxt/modular)
 
-###Snapshot of a sequence of sequence diagrams :-
-![image](https://dl.dropboxusercontent.com/u/8688858/seq2.png)
-
-###Snapshot of a sequence of system graphs
-![image](https://dl.dropboxusercontent.com/u/8688858/system-graphs.png)
+###Snapshot :-
+![image](https://dl.dropboxusercontent.com/u/8688858/graph_seq.png)
 
 
 # Simple Usage
