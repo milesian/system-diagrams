@@ -45,7 +45,10 @@ dev=> (go)
 [http://localhost:8011/sequence](http://localhost:8011/sequence)   
 [http://localhost:8011/graph](http://localhost:8011/graph)
 
-## visualising sequences
+## Sending system sequences data
+
+Open your [web client](http://localhost:8011/sequence)   
+
 You need to send your data sequence to this entrypoint ```http://localhost:8011/publish-sequence``` following [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) data format.
 
 Example using curl:
@@ -53,7 +56,10 @@ Example using curl:
 curl -H "Content-Type: application/json" -d '{"sequence":"Alice->Bob: Hello Bob, how are you? \n Note right of Bob: Bob thinks \n Bob-->Alice: I am good thanks!"}' http://localhost:8011/publish-sequence
 ```
 
-## visualising graphs
+
+## Sending system graphs data
+Open your [web client](http://localhost:8011/graph)   
+
 You need to send your data graph to this entrypoint ```http://localhost:8011/publish-graph``` following [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3) data format.
 
 Example using curl:
