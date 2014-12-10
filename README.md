@@ -42,8 +42,8 @@ dev=> (go)
 
 ### Open web clients (browser tabs) 
 
-http://localhost:8011/sequence   
-http://localhost:8011/graph
+[http://localhost:8011/sequence](http://localhost:8011/sequence)   
+[http://localhost:8011/graph](http://localhost:8011/graph)
 
 ## visualising sequences
 You need to send your data sequence to this entrypoint ```http://localhost:8011/publish-sequence``` following [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) data format.
