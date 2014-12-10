@@ -50,7 +50,7 @@ var render = dagreD3.render();
 
 function tryDraw(v) {
   var g;
-  if (true) {
+  if (v) {
     try {
       g = graphlibDot.read(v);
     } catch (e) {
@@ -72,8 +72,8 @@ function tryDraw(v) {
 
 $("#current").append("<svg width=800 height=600><g/></svg>");
 d3.select("#current svg g").call(render, g);
-$("#diagram").append($("#current svg"));
-$("#diagram").append("<hr>");
+$("#diagram").prepend($("#current svg"));
+$("#diagram").prepend("<hr>");
 
 
   }

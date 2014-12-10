@@ -20,8 +20,8 @@
 (def routes
   ["/" [["sequence" :sequence]
         ["graph" :graph]
-        ["publish-sequence" :publish-sequence-h]
-        ["publish-graph" :publish-graph-h]
+        ["publish-sequence" :publish-sequence]
+        ["publish-graph" :publish-graph]
         ["" (->ResourcesMaybe {:prefix "public/"})]]])
 
 (defn publish-message [ws m]
@@ -41,21 +41,21 @@
   )
 (defrecord WebApp [ws port]
   WebService
-  (request-handlers [this] {:publish-sequence-h (fn [req]
+  (request-handlers [this] {:publish-sequence (fn [req]
                                                 (when-let [sequence-diagram  (:sequence (-> (:body req)  read-json-body ->clj))]
                                                   (println sequence-diagram)
 
                                                   (publish-message ws sequence-diagram)
                                                   (response  " >>>> sequence diagram published!")))
-                            :publish-graph-h (fn [req]
+                            :publish-graph (fn [req]
                                              (when-let [graph-diagram  (:graph (-> (:body req)  read-json-body ->clj))]
                                                (println graph-diagram)
 
                                                (publish-graph ws graph-diagram)
                                                (response  " >>>> graph diagram published!")))
 
-                            :sequence (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "index")))
-                            :graph (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "system")))
+                            :sequence (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "sequence")))
+                            :graph (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "graph")))
                             })
   (routes [_] routes)
   (uri-context [_] ""))

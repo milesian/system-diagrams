@@ -14,12 +14,13 @@
 var socket = new WebSocket("ws://localhost:{{port}}/diagram_ws");
 socket.onmessage = function(event) {
 var d=JSON.parse(event.data)["sequence"];
-
+if(d){
 var c = $("#diagram").html();
 $("#diagram").empty();
 var diagram = Diagram.parse(d);
 diagram.drawSVG('diagram',{theme: 'simple'});
 $("#diagram").append("<hr>"+c);
+}
 }
 </script>
 </head>
