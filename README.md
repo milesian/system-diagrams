@@ -41,18 +41,13 @@ dev=> (go)
 
 ```
 
-### Open web clients (using clojure or opening browser tabs :-)
-Using clojure
-```clojure
-dev=> (clojure.java.browse/browse-url "http://localhost:8011/sequence")
-dev=> (clojure.java.browse/browse-url "http://localhost:8011/graph")
-```
-Open browser tabs:   
+### Open web clients (browser tabs) 
+
 http://localhost:8011/sequence   
 http://localhost:8011/graph
 
 ## visualising sequences
-You need to send your sequence to this entrypoint ```http://localhost:8011/publish-sequence``` following [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) data format.
+You need to send your data sequence to this entrypoint ```http://localhost:8011/publish-sequence``` following [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) data format.
 
 Example using curl:
 ```
@@ -60,7 +55,7 @@ curl -H "Content-Type: application/json" -d '{"sequence":"Alice->Bob: Hello Bob,
 ```
 
 ## visualising graphs
-You need to send your sequence to this entrypoint ```http://localhost:8011/publish-graph``` following [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3) data format.
+You need to send your data graph to this entrypoint ```http://localhost:8011/publish-graph``` following [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3) data format.
 
 Example using curl:
 ```
