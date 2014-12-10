@@ -1,6 +1,5 @@
 # webclient-system-diagram 
-### server side included too!
-Visualise your system in real time using this standalone tool.
+This project is intended to be used as a standalone tool to visualise your system in real time. Thus it includes a couple of server entrypoints (to recieve the data to represent), a websocket and a couple of html pages to render data using js. 
 
 So far it's ready for rendering **sequence call system diagrams** (using js lib: [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams)) and **system graphs** (using js lib: [cpettitt/dagre](https://github.com/cpettitt/dagre) and [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3)).
 
