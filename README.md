@@ -1,14 +1,16 @@
-# webclient-system-diagram
+# webclient-system-diagram (server side included too!)
 
-With this webclient (althought it's incluedes also the server side) You can visualise sequence call system diagrams (using js lib: [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams)) and system graphs (using js lib: [cpettitt/dagre](https://github.com/cpettitt/dagre) and [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3)).
+Visualise your stuartsierra/component system in real time.
+
+So far it's ready for rendering **sequence call system diagrams** (using js lib: [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams)) and **system graphs** (using js lib: [cpettitt/dagre](https://github.com/cpettitt/dagre) and [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3)).
 
 
 It's based on webapp and websocket. It uses [stuartsierra/component](https://github.com/stuartsierra/component) and [juxt/modular](https://github.com/juxt/modular)
 
-It is intended to use as standalone app
+It's been designed to use as standalone app
 
 ###Snapshot of a sequence of sequence diagrams :-
-![image](https://dl.dropboxusercontent.com/u/8688858/seq.png)
+![image](https://dl.dropboxusercontent.com/u/8688858/seq2.png)
 
 ###Snapshot of a sequence of system graphs
 ![image](https://dl.dropboxusercontent.com/u/8688858/system-graphs.png)
