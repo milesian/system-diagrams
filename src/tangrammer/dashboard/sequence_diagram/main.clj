@@ -7,6 +7,6 @@
   (eval '(do (require 'tangrammer.dashboard.sequence-diagram.system)
              (require 'com.stuartsierra.component)
              ;; TODO: Get from arguments
-             (com.stuartsierra.component/start (tangrammer.dashboard.sequence-diagram/new-prod-system))
+             (com.stuartsierra.component/start (tangrammer.dashboard.sequence-diagram.system/new-prod-system))
              (println "sequence-diagram dashboard")
              (println "Ready..."))))
