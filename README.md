@@ -18,14 +18,6 @@ Using git
 ```
 $ git clone git@github.com:tangrammer/webclient-system-diagram.git
 $ cd webclient-system-diagram
-$ lein repl
-
-```
-
-Using [lein-try](https://github.com/rkneufeld/lein-try)
-```
-$ lein try tangrammer/webclient-system-diagram "0.1.5"
-
 ```
 
 ### Start server side 
@@ -34,9 +26,8 @@ By default dashboard will use 8011 and 8012 ports (you can change the configurat
 
 Start the dashboard and open the web client
 
-```clojure
-user=> (dev)
-dev=> (go)
+```
+$ lein run
 
 ```
 
