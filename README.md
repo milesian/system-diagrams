@@ -1,16 +1,12 @@
 # webclient-system-diagram 
-### server side included too!
-Visualise your system in real time using this standalone tool.
+This project is intended to be used as a standalone tool to visualise your system in real time. Thus it includes a couple of server entrypoints (to recieve the data to represent), a websocket and a couple of html pages to render data using js. 
 
 So far it's ready for rendering **sequence call system diagrams** (using js lib: [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams)) and **system graphs** (using js lib: [cpettitt/dagre](https://github.com/cpettitt/dagre) and [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3)).
 
 Besides these js resources it's written in clojure and mainly based on [http-kit](http://www.http-kit.org/),  [stuartsierra/component](https://github.com/stuartsierra/component) and [juxt/modular](https://github.com/juxt/modular)
 
-###Snapshot of a sequence of sequence diagrams :-
-![image](https://dl.dropboxusercontent.com/u/8688858/seq2.png)
-
-###Snapshot of a sequence of system graphs
-![image](https://dl.dropboxusercontent.com/u/8688858/system-graphs.png)
+###Snapshot :-
+![image](https://dl.dropboxusercontent.com/u/8688858/graph_seq.png)
 
 
 # Simple Usage
@@ -22,14 +18,6 @@ Using git
 ```
 $ git clone git@github.com:tangrammer/webclient-system-diagram.git
 $ cd webclient-system-diagram
-$ lein repl
-
-```
-
-Using [lein-try](https://github.com/rkneufeld/lein-try)
-```
-$ lein try tangrammer/webclient-system-diagram "0.1.5"
-
 ```
 
 ### Start server side 
@@ -38,32 +26,32 @@ By default dashboard will use 8011 and 8012 ports (you can change the configurat
 
 Start the dashboard and open the web client
 
-```clojure
-user=> (dev)
-dev=> (go)
+```
+$ lein run
 
 ```
 
-### Open web clients (using clojure or opening browser tabs :-)
-Using clojure
-```clojure
-dev=> (clojure.java.browse/browse-url "http://localhost:8011/sequence")
-dev=> (clojure.java.browse/browse-url "http://localhost:8011/graph")
-```
-Open browser tabs:   
-http://localhost:8011/sequence   
-http://localhost:8011/graph
+### Open web clients (browser tabs) 
 
-## visualising sequences
-You need to send your sequence to this entrypoint ```http://localhost:8011/publish-sequence``` following [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) data format.
+[http://localhost:8011/sequence](http://localhost:8011/sequence)   
+[http://localhost:8011/graph](http://localhost:8011/graph)
+
+## Sending system sequences data
+
+Open your [web client](http://localhost:8011/sequence)   
+
+You need to send your data sequence to this entrypoint ```http://localhost:8011/publish-sequence``` following [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) data format.
 
 Example using curl:
 ```
 curl -H "Content-Type: application/json" -d '{"sequence":"Alice->Bob: Hello Bob, how are you? \n Note right of Bob: Bob thinks \n Bob-->Alice: I am good thanks!"}' http://localhost:8011/publish-sequence
 ```
 
-## visualising graphs
-You need to send your sequence to this entrypoint ```http://localhost:8011/publish-graph``` following [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3) data format.
+
+## Sending system graphs data
+Open your [web client](http://localhost:8011/graph)   
+
+You need to send your data graph to this entrypoint ```http://localhost:8011/publish-graph``` following [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3) data format.
 
 Example using curl:
 ```
