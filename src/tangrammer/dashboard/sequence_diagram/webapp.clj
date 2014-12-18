@@ -20,6 +20,7 @@
 (def routes
   ["/" [["sequence" :sequence]
         ["graph" :graph]
+        ["big-graph" :big-graph]
         ["publish-sequence" :publish-sequence]
         ["publish-graph" :publish-graph]
         ["" (->ResourcesMaybe {:prefix "public/"})]]])
@@ -56,6 +57,7 @@
 
                             :sequence (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "sequence")))
                             :graph (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "graph")))
+                            :big-graph (fn [req] (response (render-page {:webapp-port port :port (:port ws)} "big-graph")))
                             })
   (routes [_] routes)
   (uri-context [_] ""))
