@@ -33,49 +33,6 @@ The example project used to obtain these snapshots is build with [juxt/modular](
 ```
 
 
-# Instructions to use it as a standalone tool
-
-#### Get the project 
-
-```
-$ git clone git@github.com:milesian/system-diagrams.git
-$ cd system-diagrams
-```
-
-#### Start server side 
-
-By default dashboard will use 8011 and 8012 ports (you can change the configuration in [dashboard.edn](https://github.com/milesian/system-diagrams/blob/master/resources/.dashboard.edn))
-
-Start the dashboard and open the web client
-
-`$ lein run`
-
-#### Open web clients (browser tabs) 
-
-[http://localhost:8011/sequence](http://localhost:8011/sequence)   
-[http://localhost:8011/graph](http://localhost:8011/graph)
-
-#### Sending system sequences data
-
-Open your [web client](http://localhost:8011/sequence)   
-
-You need to send your data sequence to this entrypoint ```http://localhost:8011/publish-sequence``` following [bramp/js-sequence-diagrams](https://github.com/bramp/js-sequence-diagrams) data format.
-
-Example using curl:
-```
-curl -H "Content-Type: application/json" -d '{"sequence":"Alice->Bob: Hello Bob, how are you? \n Note right of Bob: Bob thinks \n Bob-->Alice: I am good thanks!"}' http://localhost:8011/publish-sequence
-```
-
-
-#### Sending system graphs data
-Open your [web client](http://localhost:8011/graph)   
-
-You need to send your data graph to this entrypoint ```http://localhost:8011/publish-graph``` following [cpettitt/dagre-d3](https://github.com/cpettitt/dagre-d3) data format.
-
-Example using curl:
-```
-curl -H "Content-Type: application/json" -d '{"graph":"digraph {A -> B -> C; B -> D; D -> E;}"}' http://localhost:8011/publish-graph
-```
 
 
 # Instructions to use it in your stuartsierra/component system to visualise your system calls
@@ -169,6 +126,9 @@ curl -H "Content-Type: application/json" -d '{"graph":"digraph {A -> B -> C; B -
 **Invoke your component-app and check your browsers:** [[sequence diagram]](http://localhost:8011/sequence) - [[graph diagram]](http://localhost:8011/graph)
 
 
+
+### Instructions to use it as a standalone tool
+[here](https://github.com/milesian/system-diagrams/wiki/Instructions-to-use-it-as-a-standalone-tool)
 
 
 ## License
