@@ -93,34 +93,7 @@ curl -H "Content-Type: application/json" -d '{"graph":"digraph {A -> B -> C; B -
                                   ...
           }}
 ```
-**Update your system.clj**
 
-```clojure
-
-(ns ...system
-(:require 
-		 ...
-   [milesian.system-diagrams.webclient.system :as wsd]
-		 ...))
-
-
-...
-
-;; add system-diagrams web components to your current system
-
-(defn new-system-map
-  [config]
-  (apply system-map
-    (apply concat
-      (-> {}
-      ...
-          ;; webclient-system-diagram
-          (wsd/add-websocket (wsd/config))
-          (wsd/add-webapp-server (wsd/config))
-      ...
-          ))))
-
-```
 **Add dashboard.edn config to resources folder**
 
 ```clojure
@@ -144,8 +117,27 @@ curl -H "Content-Type: application/json" -d '{"graph":"digraph {A -> B -> C; B -
    [milesian.aop :as aop]
    [milesian.aop.utils  :refer (extract-data)]
    [milesian.sequence-diagram :refer (store-message try-to-publish store)]
+   [milesian.system-diagrams.webclient.system :as wsd]
 
 		 ...))
+
+...
+
+(defn new-dev-system
+  "Create a development system"
+  []
+  (let [config (config)
+        s-map (->
+               (new-system-map config)
+               (wsd/add-websocket (wsd/config))
+               (wsd/add-webapp-server (wsd/config))
+
+               #_(assoc
+                     ))]
+    (-> s-map
+        (component/system-using (new-dependency-map))
+        (co-dependency/system-co-using (new-co-dependency-map))
+        )))
 
 ...
 
