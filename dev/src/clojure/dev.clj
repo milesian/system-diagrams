@@ -6,7 +6,7 @@
    [com.stuartsierra.component :as component]
    [clojure.tools.namespace.repl :refer (refresh refresh-all)]
    [clojure.tools.logging :refer (infof)]
-   [tangrammer.dashboard.sequence-diagram.system :refer [new-prod-system]]
+   [milesian.system-diagrams.webclient.system :refer [new-prod-system]]
    env
    ))
 

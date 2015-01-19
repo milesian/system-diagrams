@@ -1,4 +1,4 @@
-(defproject milesian/system-diagrams "0.1.2-SNAPSHOT"
+(defproject milesian/system-diagrams "0.1.3-SNAPSHOT"
   :description "system diagrams formats and web client"
   :url "https://github.com/milesian/system-diagrams"
   :license {:name "MIT License"

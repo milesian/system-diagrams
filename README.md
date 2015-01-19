@@ -17,7 +17,7 @@ Besides these js resources it's written in clojure and mainly based on [http-kit
 
 
 ```clojure
-[milesian/system-diagrams "0.1.1"]
+[milesian/system-diagrams "0.1.2"]
 ```
 
 ```clojure 
