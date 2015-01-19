@@ -93,6 +93,45 @@ curl -H "Content-Type: application/json" -d '{"graph":"digraph {A -> B -> C; B -
                                   ...
           }}
 ```
+**Update your system.clj**
+
+```clojure
+
+(ns ...system
+(:require 
+		 ...
+   [milesian.system-diagrams.webclient.system :as wsd]
+		 ...))
+
+
+...
+
+;; add system-diagrams web components to your current system
+
+(defn new-system-map
+  [config]
+  (apply system-map
+    (apply concat
+      (-> {}
+      ...
+          ;; webclient-system-diagram
+          (wsd/add-websocket (wsd/config))
+          (wsd/add-webapp-server (wsd/config))
+      ...
+          ))))
+
+```
+**Add dashboard.edn config to resources folder**
+
+```clojure
+{:webapp {:port 8011}
+ :websocket {:port 8012}}
+```
+
+
+
+
+
 **Update your dev.clj**
 
 ```clojure
