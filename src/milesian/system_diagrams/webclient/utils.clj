@@ -1,4 +1,4 @@
-(ns tangrammer.dashboard.sequence-diagram.utils
+(ns milesian.system-diagrams.webclient.utils
   (:require    [clojure.walk :refer (postwalk)]
                [clojure.string :as str]
                [cheshire.core :refer (decode decode-stream encode)]

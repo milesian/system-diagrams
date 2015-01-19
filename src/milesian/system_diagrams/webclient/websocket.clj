@@ -1,6 +1,6 @@
-(ns tangrammer.dashboard.sequence-diagram.websocket
+(ns milesian.system-diagrams.webclient.websocket
   (:require [com.stuartsierra.component :as component]
-            [bidi.bidi :refer (make-handler)]
+            [bidi.ring :refer (make-handler)]
 
 
             [clojure.tools.logging :as log]

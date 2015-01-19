@@ -1,4 +1,4 @@
-(ns tangrammer.dashboard.sequence-diagram.system
+(ns milesian.system-diagrams.webclient.system
   (:refer-clojure :exclude [read])
   (:require
 
@@ -12,9 +12,9 @@
    [modular.bidi :refer (new-router new-web-service)]
 
 
-   [tangrammer.dashboard.sequence-diagram.websocket :refer (new-websocket)]
+   [milesian.system-diagrams.webclient.websocket :refer (new-websocket)]
 
-   [tangrammer.dashboard.sequence-diagram.webapp :refer (new-webapp)]
+   [milesian.system-diagrams.webclient.webapp :refer (new-webapp)]
 
    [clojure.java.io :as io]
    [clojure.tools.reader :refer (read)]
@@ -24,22 +24,22 @@
 
 (defn add-websocket [system config]
   (assoc system
-    :ws-bridge (-> (new-websocket {:port (get-in config [:websocket :port])}))))
+    ::ws-bridge (-> (new-websocket {:port (get-in config [:websocket :port])}))))
 
 (defn add-webapp-server
   [system config]
   (assoc system
-    :webapp
+    ::webapp
     (-> (new-webapp :port (get-in config [:webapp :port]))
-        (using {:ws :ws-bridge}))
+        (using {:ws ::ws-bridge}))
 
-    :webapp-router
+    ::webapp-router
     (-> (new-router)
-        (using [:webapp]))
+        (using [::webapp]))
 
-    :webapp-listener
+    ::webapp-listener
     (-> (new-http-listener :port (get-in config [:webapp :port]))
-        (using {:request-handler :webapp-router}))))
+        (using {:request-handler ::webapp-router}))))
 
 (defn configurable-system-map
   "Build the system map, piece by piece"
@@ -54,6 +54,8 @@
 (defn ^:private read-file
   [f]
   (read
+   ;; This indexing-push-back-reader gives better information if the
+   ;; file is misconfigured.
    (indexing-push-back-reader
     (java.io.PushbackReader. (io/reader f)))))
 
@@ -63,10 +65,23 @@
     (read-file f)
     {}))
 
-(defn config []
-  (config-from (io/file "resources/.dashboard.edn"))
-  )
+(defn ^:private user-config
+  []
+  (config-from (io/file (System/getProperty "user.home") ".dashboard.edn")))
 
+(defn ^:private config-from-classpath
+  []
+  (if-let [res (io/resource "dashboard.edn")]
+    (config-from (io/file res))
+    {}))
+
+
+(defn config
+  "Return a map of the static configuration used in the component
+  constructors."
+  []
+  (merge (config-from-classpath)
+         (user-config)))
 
 (defn new-prod-system []
   (let [s-map (configurable-system-map (config))]

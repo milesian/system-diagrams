@@ -1,11 +1,11 @@
-(ns tangrammer.dashboard.sequence-diagram.webapp
+(ns milesian.system-diagrams.webclient.webapp
   (:require
-   [bidi.bidi :refer (make-handler ->ResourcesMaybe ->Files)]
+   [bidi.ring :refer (make-handler ->ResourcesMaybe ->Files)]
    [ring.util.response :refer (response redirect file-response)]
-   [modular.bidi :refer (WebService path-for)]
+   [modular.bidi :refer (WebService)]
    [com.stuartsierra.component :as component :refer (using)]
    [org.httpkit.server :refer (send!)]
-   [tangrammer.dashboard.sequence-diagram.utils :refer (->clj read-json-body)]
+   [milesian.system-diagrams.webclient.utils :refer (->clj read-json-body)]
    [clostache.parser :refer (render-resource render)]
    [cheshire.core :refer (generate-string)]
    ))
@@ -40,6 +40,8 @@
                             })  false))
   (println "try to publish message!")
   )
+
+
 (defrecord WebApp [ws port]
   WebService
   (request-handlers [this] {:publish-sequence (fn [req]
