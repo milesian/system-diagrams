@@ -84,7 +84,7 @@ curl -H "Content-Type: application/json" -d '{"graph":"digraph {A -> B -> C; B -
 ```clojure
 ;; Update your dev dependencies 
 :profiles {:dev {:dependencies [ ...
-                                  [milesian/system-diagrams "0.1.1" :exclusions [http-kit]]
+                                  [milesian/system-diagrams "0.1.2"]
                                   [milesian/bigbang "0.1.1"]
                                   [milesian/aop "0.1.4"]
                                   [milesian/identity "0.1.3"]
