@@ -8,7 +8,8 @@ So far it's ready for rendering **sequence call system diagrams** (using js lib:
 
 Besides these js resources it's written in clojure and mainly based on [http-kit](http://www.http-kit.org/),  [stuartsierra/component](https://github.com/stuartsierra/component), [juxt/modular](https://github.com/juxt/modular) and [milesian/aop](https://github.com/milesian/aop)
 
-###Snapshots :-
+###Snapshots:-
+The example project used to obtain these snapshots is build with [juxt/modular](https://github.com/juxt/modular) and uses [juxt/cylon](https://github.com/juxt/cylon) oauth2 feature
 [<img src="https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/graph.png" alt="d'Alenerawing" style="width: 40%;"/>](https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/graph.png)
 [<img src="https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/sequence.png" alt="Drawing" style="width: 40%;"/>](https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/sequence.png)
 
