@@ -74,7 +74,7 @@ The example project used to obtain these snapshots is build with [juxt/modular](
    [milesian.identity :as identity]
    [milesian.aop :as aop]
    [milesian.aop.utils  :refer (extract-data)]
-   [milesian.sequence-diagram :refer (store-message try-to-publish store)]
+   [milesian.system-diagrams :refer (store-message try-to-publish store)]
    [milesian.system-diagrams.webclient.system :as wsd]
 
 		 ...))
