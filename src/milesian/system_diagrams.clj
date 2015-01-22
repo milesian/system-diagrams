@@ -113,7 +113,9 @@
         ;; _ (clojure.pprint/pprint opened-messages-deps)
         ;; _ (println "\nOPENED MESSAGES-BIS\n")
         ;; _ (clojure.pprint/pprint opened-messages-bis)
-        opened-messages (apply conj opened-messages opened-messages-bis)
+        opened-messages (if (empty? opened-messages-bis)
+                          opened-messages
+                          (apply conj opened-messages opened-messages-bis))
 
         ]
     (str "digraph {node [rx=5 ry=5 labelStyle=\"font: 300 14px Helvetica\"]; edge [labelStyle=\"font: 300 14px Helvetica\" ]; "
