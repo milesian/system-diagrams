@@ -85,10 +85,13 @@
 
         opened-messages-deps (reduce
                               (fn [v [who id label]]
-                                (let [dep (-> (map #(vector who (name (last %)) "") (component/dependencies (get system (keyword who))))
+                                (let [dep (-> (map #(vector who (name (last %)) "")
+                                                   (component/dependencies (get system (keyword who))))
                                                 set
                                                 )]
-                                  (apply conj v dep)
+                                  (if (empty? dep)
+                                    v
+                                    (apply conj v dep))
                                   )
                                 )
 
