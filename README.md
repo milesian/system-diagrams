@@ -42,10 +42,10 @@ The example project used to obtain these snapshots is build with [juxt/modular](
 ```clojure
 ;; Update your dev dependencies 
 :profiles {:dev {:dependencies [ ...
-                                  [milesian/system-diagrams "0.1.2"]
+                                  [milesian/system-diagrams "0.1.3"]
                                   [milesian/bigbang "0.1.1"]
-                                  [milesian/aop "0.1.4"]
-                                  [milesian/identity "0.1.3"]
+                                  [milesian/aop "0.1.5"]
+                                  [milesian/identity "0.1.4"]
                                   ...
                                   ]
                                   ...
