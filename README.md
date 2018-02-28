@@ -10,8 +10,8 @@ Besides these js resources it's written in clojure and mainly based on [http-kit
 
 ###Snapshots:-
 The example project used to obtain these snapshots is build with [juxt/modular](https://github.com/juxt/modular) and uses [juxt/cylon](https://github.com/juxt/cylon) oauth2 feature
-[<img src="https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/graph.png" alt="d'Alenerawing" style="width: 40%;"/>](https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/graph.png)
-[<img src="https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/sequence.png" alt="Drawing" style="width: 40%;"/>](https://dl.dropboxusercontent.com/u/8688858/real-system-visualisations/sequence.png)
+[<img src="https://user-images.githubusercontent.com/731829/36782346-f9a90b0a-1c78-11e8-8e62-24a91cc67463.png" alt="d'Alenerawing" style="width: 40%;"/>](https://user-images.githubusercontent.com/731829/36782346-f9a90b0a-1c78-11e8-8e62-24a91cc67463.png)
+[<img src="https://user-images.githubusercontent.com/731829/36782351-fcaef904-1c78-11e8-95a5-37193c5d7888.png" alt="Drawing" style="width: 40%;"/>](https://user-images.githubusercontent.com/731829/36782351-fcaef904-1c78-11e8-95a5-37193c5d7888.png)
 
 
 #### Releases and Dependency Information
